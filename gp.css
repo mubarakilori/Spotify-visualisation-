@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    background-color: #c76b6b; /* Spotify dark theme */
+    color: #ffffff; /* White text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full screen height */
+    text-align: center; /* Center align text */
+    overflow: hidden; /* Prevent scrolling */
+    position: relative;
+}
+
+/* Overlay for background blur */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    pointer-events: none; /* Allow clicks through the overlay */
+    z-index: -1; /* Ensure it stays behind all content */
+}
+
+/* Title */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Subtle text shadow for contrast */
+}
+
+/* Player Section */
+#player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#album-art {
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px; /* Add space below album art */
+}
+
+/* Track and Artist Names */
+#track-name {
+    font-size: 2.2rem; /* Larger font size */
+    font-weight: bold;
+    color: #f4f4f4; /* Lightened white for better contrast */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Add depth with shadow */
+}
+
+#artist-name {
+    font-size: 1.5rem; /* Slightly larger artist name */
+    color: #d1d1d1; /* Softer gray */
+    margin-bottom: 20px;
+    font-style: italic; /* Add style to distinguish artist name */
+}
+
+/* Controls Section */
+#controls {
+    display: flex;
+    gap: 15px; /* Increase spacing between buttons */
+    margin-bottom: 30px; /* Add space between controls and visualizer */
+}
+
+button {
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: #1ed760; /* Lighter green on hover */
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Visualizer */
+canvas {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px; /* Add some space above the canvas */
+}
+
+/* Ensure it all fits on small screens */
+@media (max-width: 768px) {
+    #album-art {
+        width: 200px;
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    canvas {
+        width: 90%;
+        height: auto;
+    }
+
+    #track-name {
+        font-size: 1.8rem; /* Adjust track name for small screens */
+    }
+
+    #artist-name {
+        font-size: 1.2rem; /* Adjust artist name for small screens */
+    }
+}
+
+/* Dynamic Background Image */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -2; /* Behind everything */
+    filter: blur(15px); /* Apply blur effect */
+    transition: background 0.5s ease-in-out; /* Smooth transition between images */
+}
+
+/* Add a transition effect to album art shadow */
+#album-art {
+    transition: box-shadow 0.5s ease;
+}
+
+/* When album art is updated, apply a glowing effect */
+#album-art[src] {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.8);
+}
