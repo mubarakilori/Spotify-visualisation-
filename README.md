@@ -1,2 +1,2 @@
-# Spotify-visualisation-
+# Spotify-visualisation
 Spotify visualisation 
